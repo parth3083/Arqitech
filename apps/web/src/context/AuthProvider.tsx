@@ -48,7 +48,10 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   };
 
   useEffect(() => {
-    refreshAuth();
+    const initializeAuth = async () => {
+      await refreshAuth();
+    };
+    initializeAuth();
   }, []);
 
   const signIn = async () => {
