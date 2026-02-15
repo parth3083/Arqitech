@@ -3,6 +3,7 @@ import MaxWidth from '../MaxWidth';
 import { Badge } from '@repo/ui/components/ui/badge';
 import { Button } from '@repo/ui/components/ui/button';
 import { ArrowRightIcon, Layers } from 'lucide-react';
+import Upload from './Upload';
 
 const Hero = () => {
   return (
@@ -44,7 +45,7 @@ const Hero = () => {
               </h3>
               <p className="text-base">Supports JPG, PNG, formats upto 10MB</p>
             </div>
-            <p className="text-lg font-medium">Upload Images</p>
+            <Upload />
           </div>
         </div>
       </div>
