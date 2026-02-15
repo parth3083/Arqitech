@@ -20,16 +20,16 @@ jobs:
           node-version: 22
 
       - name: Install pnpm 
-        runs: npm i -g pnpm
+        run: npm i -g pnpm
 
       - name: Install all dependencies
-        runs: pnpm install --frozen-lockfile
+        run: pnpm install --frozen-lockfile
 
       - name: Lint
-        runs: pnpm lint        
+        run: pnpm lint        
       
       - name: Check formating
-        runs: pnpm format --check        
+        run: pnpm format --check        
       
       - name: Build
-        runs: pnpm build        
+        run: pnpm build        
