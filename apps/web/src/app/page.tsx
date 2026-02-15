@@ -1,11 +1,15 @@
 'use client';
-import { Button } from '@repo/ui/components/ui/button';
+import Hero from '@/components/home/Hero';
+import ProjectSection from '@/components/home/ProjectSection';
+
+import { GridPattern } from '@repo/ui/components/ui/grid-pattern';
 
 const page = () => {
   return (
-    <div className="h-screen w-full flex items-center justify-center font-medium text-xl flex-col gap-2">
-      Welcome to ArqiTech
-      <Button onClick={() => alert('Button clicked')}>Click Here</Button>
+    <div className="relative w-full min-h-screen flex flex-col ">
+      <GridPattern className="z-0" />
+      <Hero />
+      <ProjectSection />
     </div>
   );
 };

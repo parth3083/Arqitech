@@ -1,8 +1,8 @@
-import type { Metadata } from 'next';
-import '@repo/ui/globals.css';
 import Navbar from '@/components/Navbar';
-import { Afacad_Flux } from 'next/font/google';
 import AuthProvider from '@/context/AuthProvider';
+import '@repo/ui/globals.css';
+import type { Metadata } from 'next';
+import { Afacad_Flux } from 'next/font/google';
 
 export const metadata: Metadata = {
   title: 'Create Next App',

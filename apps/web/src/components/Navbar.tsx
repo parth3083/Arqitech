@@ -12,7 +12,7 @@ const Navbar = () => {
   const { isSignedIn, username, signIn, signOut } = useAuth();
 
   return (
-    <nav className="w-full fixed  border-b border-border bg-white/50 z-999 backdrop-blur-2xl">
+    <nav className="w-full sticky top-0 inset-x-0 border-b border-border bg-white/50 z-999 backdrop-blur-2xl">
       <MaxWidth className="flex h-16 items-center justify-between">
         <div className="flex items-center gap-4 md:gap-8">
           {/* Logo */}
