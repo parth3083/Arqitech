@@ -5,9 +5,11 @@ import Link from 'next/link';
 import { Button } from '@repo/ui/components/ui/button';
 import { Menu, X } from 'lucide-react';
 import { useState } from 'react';
+import { useAuth } from '@/context/AuthProvider';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { isSignedIn, username, signIn, signOut } = useAuth();
 
   return (
     <nav className="w-full fixed  border-b border-border bg-white/50 z-999 backdrop-blur-2xl">
@@ -30,10 +32,27 @@ const Navbar = () => {
         </div>
 
         <div className="hidden items-center gap-5 md:flex">
-          <Button className="text-base cursor-pointer" variant={'outline'}>
-            Sign In
-          </Button>
-          <Button className="text-base cursor-pointer">Get Started</Button>
+          {isSignedIn ? (
+            <>
+              <Button className="text-base cursor-pointer" variant={'outline'}>
+                {username}
+              </Button>
+              <Button className="text-base cursor-pointer" onClick={signOut}>
+                Sign Out
+              </Button>
+            </>
+          ) : (
+            <>
+              <Button
+                className="text-base cursor-pointer"
+                variant={'outline'}
+                onClick={signIn}
+              >
+                Sign In
+              </Button>
+              <Button className="text-base cursor-pointer">Get Started</Button>
+            </>
+          )}
         </div>
 
         <button

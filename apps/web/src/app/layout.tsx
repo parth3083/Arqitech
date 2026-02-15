@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import '@repo/ui/globals.css';
 import Navbar from '@/components/Navbar';
 import { Afacad_Flux } from 'next/font/google';
+import AuthProvider from '@/context/AuthProvider';
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -21,8 +22,10 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${inter.variable} ${inter.className} antialiased`}>
-        <Navbar />
-        {children}
+        <AuthProvider>
+          <Navbar />
+          {children}
+        </AuthProvider>
       </body>
     </html>
   );
