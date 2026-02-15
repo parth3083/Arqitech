@@ -1,0 +1,35 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install pnpm 
+        runs: npm i -g pnpm
+
+      - name: Install all dependencies
+        runs: pnpm install --frozen-lockfile
+
+      - name: Lint
+        runs: pnpm lint        
+      
+      - name: Check formating
+        runs: pnpm format --check        
+      
+      - name: Build
+        runs: pnpm build        
