@@ -8,14 +8,14 @@ interface MaxWidthProps {
 
 function MaxWidth({ children, className }: MaxWidthProps) {
   return (
-    <div
+    <section
       className={cn(
-        'h-full mx-auto w-full max-w-7xl px-2.5 md:px-20 ',
+        'h-full mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-20',
         className
       )}
     >
       {children}
-    </div>
+    </section>
   );
 }
 
