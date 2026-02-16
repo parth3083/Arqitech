@@ -2,6 +2,7 @@ import { Badge } from '@repo/ui/components/ui/badge';
 import { Card, CardContent, CardFooter } from '@repo/ui/components/ui/card';
 import { ArrowRightIcon, ClockIcon } from 'lucide-react';
 import { ProjectCardProps } from '@/types/project-card.types';
+import Image from 'next/image';
 
 const ProjectCard = ({ name, time, createdBy, imageUrl }: ProjectCardProps) => {
   return (
@@ -14,12 +15,12 @@ const ProjectCard = ({ name, time, createdBy, imageUrl }: ProjectCardProps) => {
           Community
         </Badge>
         {imageUrl ? (
-          //   <img
-          //     src={imageUrl}
-          //     alt={`${name} preview`}
-          //     className='h-full w-full object-cover'
-          //   />
-          <div className="h-full w-full" />
+          <Image
+            src={imageUrl}
+            alt={`${name} preview`}
+            fill
+            className="object-cover w-full h-full"
+          />
         ) : (
           <div className="h-full w-full" />
         )}
