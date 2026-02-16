@@ -6,6 +6,8 @@ import {
   PROGRESS_STEP,
   REDIRECT_DELAY_MS,
 } from '@/lib/constants';
+import { createProject } from '@/lib/puter.action';
+import { DesignItem } from '@/types/puter.types';
 import { Progress } from '@repo/ui/components/ui/progress';
 import { UploadIcon } from 'lucide-react';
 import { useRouter } from 'next/navigation';
@@ -14,9 +16,11 @@ import type { ChangeEvent, DragEvent } from 'react';
 
 type UploadProps = {
   onComplete?: (base64Data: string) => void;
+  projects: DesignItem[];
+  setProjects: (projects: DesignItem[]) => void;
 };
 
-const Upload = ({ onComplete }: UploadProps) => {
+const Upload = ({ onComplete, projects, setProjects }: UploadProps) => {
   const [file, setFile] = useState<File | null>(null);
   const [isDragging, setIsDragging] = useState<boolean>(false);
   const [progress, setProgress] = useState<number>(0);
@@ -87,6 +91,36 @@ const Upload = ({ onComplete }: UploadProps) => {
       });
     }, PROGRESS_INTERVAL_MS);
     const uniqueId = Date.now().toString();
+    const name = `Residence ${uniqueId}`;
+    const base64Data = await base64Promise;
+    const newItem = {
+      id: uniqueId,
+      name,
+      sourceImage: base64Data,
+      renderedImage: undefined,
+      timestamp: Date.now(),
+    };
+    const saved = await createProject({
+      item: newItem,
+      visibility: 'private',
+    });
+
+    if (!saved) {
+      console.error('Failed to save project');
+      return false;
+    }
+    setProjects([newItem, ...projects]);
+
+    // Store project data in sessionStorage for the visualizer page
+    sessionStorage.setItem(
+      `project-${uniqueId}`,
+      JSON.stringify({
+        initialImage: saved.sourceImage,
+        initialRendered: saved.renderedImage,
+        name,
+      })
+    );
+
     router.push(`/visualizer/${uniqueId}`);
   };
 
