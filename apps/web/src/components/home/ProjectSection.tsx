@@ -2,7 +2,7 @@ import React from 'react';
 import MaxWidth from '@/components/MaxWidth';
 import ProjectCard from '@/components/home/ProjectCard';
 import { HeroProps } from './Hero';
-const ProjectSection = ({ projects, setProjects }: HeroProps) => {
+const ProjectSection = ({ projects }: HeroProps) => {
   return (
     <MaxWidth className="flex w-full flex-col items-center gap-10 mt-24">
       <div className="w-full text-left">
