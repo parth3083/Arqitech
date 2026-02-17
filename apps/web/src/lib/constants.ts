@@ -1,10 +1,10 @@
-export const PUTER_WORKER_URL = process.env.VITE_PUTER_WORKER_URL || '';
+export const PUTER_WORKER_URL = 'https://sensible-pen-2991.puter.work';
 
 // Storage Paths
 export const STORAGE_PATHS = {
-  ROOT: 'roomify',
-  SOURCES: 'roomify/sources',
-  RENDERS: 'roomify/renders',
+  ROOT: 'arqitech',
+  SOURCES: 'arqitech/sources',
+  RENDERS: 'arqitech/renders',
 } as const;
 
 // Timing Constants (in milliseconds)
