@@ -1,11 +1,16 @@
-import React from 'react';
-import MaxWidth from '../MaxWidth';
 import { Badge } from '@repo/ui/components/ui/badge';
 import { Button } from '@repo/ui/components/ui/button';
+import { DesignItem } from '@/types/puter.types';
 import { ArrowRightIcon, Layers } from 'lucide-react';
+import MaxWidth from '../MaxWidth';
 import Upload from './Upload';
 
-const Hero = () => {
+export type HeroProps = {
+  projects: DesignItem[];
+  setProjects: React.Dispatch<React.SetStateAction<DesignItem[]>>;
+};
+
+const Hero = ({ projects, setProjects }: HeroProps) => {
   return (
     <MaxWidth className="relative z-10 w-full flex flex-col items-center gap-10 pt-20">
       {/* Hero Section  */}
@@ -45,7 +50,7 @@ const Hero = () => {
               </h3>
               <p className="text-base">Supports JPG, PNG, formats upto 10MB</p>
             </div>
-            <Upload />
+            <Upload projects={projects} setProjects={setProjects} />
           </div>
         </div>
       </div>

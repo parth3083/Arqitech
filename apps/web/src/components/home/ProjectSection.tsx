@@ -1,7 +1,19 @@
-import React from 'react';
+'use client';
+import React, { useEffect } from 'react';
 import MaxWidth from '@/components/MaxWidth';
 import ProjectCard from '@/components/home/ProjectCard';
-const ProjectSection = () => {
+import { HeroProps } from './Hero';
+import { getProjects } from '@/lib/puter.action';
+const ProjectSection = ({ projects, setProjects }: HeroProps) => {
+  useEffect(() => {
+    const fetchProjects = async () => {
+      const items = await getProjects();
+
+      setProjects(items);
+    };
+
+    fetchProjects();
+  }, [setProjects]);
   return (
     <MaxWidth className="flex w-full flex-col items-center gap-10 mt-24">
       <div className="w-full text-left">
@@ -11,11 +23,18 @@ const ProjectSection = () => {
         </p>
       </div>
       <div className="w-full mb-20! z-100 px-0 sm:px-6 lg:px-10 flex flex-col items-center gap-10 sm:flex-row sm:flex-wrap">
-        <ProjectCard
-          name="Project Title"
-          time="15/02/2026"
-          createdBy="John Doe"
-        />
+        {projects &&
+          projects.length > 0 &&
+          projects.map(project => (
+            <ProjectCard
+              key={project.id}
+              id={project.id}
+              name={project.name!}
+              time={project.timestamp}
+              imageUrl={project.renderedImage || project.sourceImage}
+              createdBy="Parth"
+            />
+          ))}
       </div>
     </MaxWidth>
   );
