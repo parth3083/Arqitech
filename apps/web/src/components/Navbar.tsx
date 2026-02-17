@@ -16,7 +16,9 @@ const Navbar = () => {
       <MaxWidth className="flex h-16 items-center justify-between">
         <div className="flex items-center gap-4 md:gap-8">
           {/* Logo */}
-          <h1 className="text-2xl font-semibold">ArqiTech</h1>
+          <Link href={'/'}>
+            <h1 className="text-2xl font-semibold">ArqiTech</h1>
+          </Link>
           <ul className="hidden items-center space-x-8 md:flex">
             {navigationLinks.map((items, index) => (
               <li

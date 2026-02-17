@@ -3,18 +3,18 @@ import { navbarType } from '@/types/navbar.types';
 export const navigationLinks: navbarType[] = [
   {
     name: 'Product',
-    link: '/product',
+    link: '#',
   },
   {
     name: 'Pricing',
-    link: '/pricing',
+    link: '#',
   },
   {
     name: 'Community',
-    link: '/community',
+    link: '#',
   },
   {
     name: 'Enterprise',
-    link: '/enterprise',
+    link: '#',
   },
 ];

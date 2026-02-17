@@ -1,8 +1,19 @@
-import React from 'react';
+'use client';
+import React, { useEffect } from 'react';
 import MaxWidth from '@/components/MaxWidth';
 import ProjectCard from '@/components/home/ProjectCard';
 import { HeroProps } from './Hero';
-const ProjectSection = ({ projects }: HeroProps) => {
+import { getProjects } from '@/lib/puter.action';
+const ProjectSection = ({ projects, setProjects }: HeroProps) => {
+  useEffect(() => {
+    const fetchProjects = async () => {
+      const items = await getProjects();
+
+      setProjects(items);
+    };
+
+    fetchProjects();
+  }, [setProjects]);
   return (
     <MaxWidth className="flex w-full flex-col items-center gap-10 mt-24">
       <div className="w-full text-left">
@@ -17,8 +28,9 @@ const ProjectSection = ({ projects }: HeroProps) => {
           projects.map(project => (
             <ProjectCard
               key={project.id}
+              id={project.id}
               name={project.name!}
-              time={project.timestamp.toString()}
+              time={project.timestamp}
               imageUrl={project.renderedImage || project.sourceImage}
               createdBy="Parth"
             />
