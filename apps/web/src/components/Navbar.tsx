@@ -89,10 +89,27 @@ const Navbar = () => {
             ))}
           </ul>
           <div className="mt-5 flex flex-col gap-3">
-            <Button className="text-base w-full" variant={'outline'}>
-              Sign In
-            </Button>
-            <Button className="text-base w-full">Get Started</Button>
+            {isSignedIn ? (
+            <>
+              <Button className="text-base cursor-pointer" variant={'outline'}>
+                {username}
+              </Button>
+              <Button className="text-base cursor-pointer" onClick={signOut}>
+                Sign Out
+              </Button>
+            </>
+          ) : (
+            <>
+              <Button
+                className="text-base cursor-pointer"
+                variant={'outline'}
+                onClick={signIn}
+              >
+                Sign In
+              </Button>
+              <Button className="text-base cursor-pointer">Get Started</Button>
+            </>
+          )}
           </div>
         </MaxWidth>
       </div>
