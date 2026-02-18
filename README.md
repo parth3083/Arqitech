@@ -1,135 +1,122 @@
-# Turborepo starter
+# ArqiTech
 
-This Turborepo starter is maintained by the Turborepo core team.
+ArqiTech is an AI-first design environment tailored for architects and designers. It enables users to visualize, render, and orchestrate architectural projects directly from their browser with the speed of thought. By simply uploading a floor plan, users can generate immersive visualizations and manage their design portfolio seamlessly.
 
-## Using this example
+## Features
 
-Run the following command:
+- **AI-Powered Visualization**: Transform 2D floor plans into stunning renderings instantly.
+- **Rapid Prototyping**: Visualize, render, and ship architectural projects faster than ever.
+- **Drag & Drop Upload**: Support for JPG and PNG floor plan uploads (up to 10MB).
+- **Project Structure**: Organized project management with private visibility options.
+- **Cloud-Native Architecture**: Built on Puter.js for secure authentication, storage, and hosting.
+- **Modern UI**: A responsive, accessible interface built with Tailwind CSS and Radix UI primitives.
 
-```sh
-npx create-turbo@latest
-```
+## Technology Stack
 
-## What's inside?
+ArqiTech is built using a modern, scalable web stack:
 
-This Turborepo includes the following packages/apps:
+- **Framework**: [Next.js 16](https://nextjs.org/) (App Router)
+- **Language**: [TypeScript](https://www.typescriptlang.org/)
+- **Styling**: [Tailwind CSS 4](https://tailwindcss.com/)
+- **UI Components**: [React 19](https://react.dev/), [Lucide React](https://lucide.dev/), `@repo/ui` (internal design system)
+- **Backend & Auth**: [Puter.js](https://puter.com/) (`@heyputer/puter.js`)
+- **Monorepo Tooling**: [TurboRepo](https://turbo.build/)
 
-### Apps and Packages
+## Project Structure
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
+This project is organized as a monorepo:
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
+- `apps/web`: The main web application.
+- `packages/ui`: Shared React component library.
+- `packages/eslint-config`: Shared ESLint configuration.
+- `packages/typescript-config`: Shared TypeScript configuration.
 
-### Utilities
+## Installation
 
-This Turborepo has some additional tools already setup for you:
+### Prerequisites
 
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
+- [Node.js](https://nodejs.org/) (Version 18 or higher)
+- [pnpm](https://pnpm.io/) (Recommended package manager)
 
-### Build
+### Setup
 
-To build all apps and packages, run the following command:
+1.  **Clone the repository:**
 
-```
-cd my-turborepo
+    ```bash
+    git clone <repository-url>
+    cd arqitech
+    ```
 
-# With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed (recommended)
-turbo build
+2.  **Install dependencies:**
 
-# Without [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation), use your package manager
-npx turbo build
-yarn dlx turbo build
-pnpm exec turbo build
-```
+    This project uses `pnpm` workspaces. Install all dependencies from the root directory:
 
-You can build a specific package by using a [filter](https://turborepo.dev/docs/crafting-your-repository/running-tasks#using-filters):
+    ```bash
+    pnpm install
+    ```
 
-```
-# With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed (recommended)
-turbo build --filter=docs
+## Usage
 
-# Without [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation), use your package manager
-npx turbo build --filter=docs
-yarn exec turbo build --filter=docs
-pnpm exec turbo build --filter=docs
-```
+### Development
 
-### Develop
+To start the development server for all applications:
 
-To develop all apps and packages, run the following command:
-
-```
-cd my-turborepo
-
-# With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed (recommended)
+```bash
+pnpm dev
+# or
 turbo dev
-
-# Without [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation), use your package manager
-npx turbo dev
-yarn exec turbo dev
-pnpm exec turbo dev
 ```
 
-You can develop a specific package by using a [filter](https://turborepo.dev/docs/crafting-your-repository/running-tasks#using-filters):
+The web application will be available at [http://localhost:3000](http://localhost:3000).
 
-```
-# With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed (recommended)
-turbo dev --filter=web
+To run only the web application:
 
-# Without [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation), use your package manager
-npx turbo dev --filter=web
-yarn exec turbo dev --filter=web
-pnpm exec turbo dev --filter=web
+```bash
+pnpm --filter web dev
 ```
 
-### Remote Caching
+### Building
 
-> [!TIP]
-> Vercel Remote Cache is free for all plans. Get started today at [vercel.com](https://vercel.com/signup?/signup?utm_source=remote-cache-sdk&utm_campaign=free_remote_cache).
+To build all apps and packages:
 
-Turborepo can use a technique known as [Remote Caching](https://turborepo.dev/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
-
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup?utm_source=turborepo-examples), then enter the following commands:
-
-```
-cd my-turborepo
-
-# With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed (recommended)
-turbo login
-
-# Without [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation), use your package manager
-npx turbo login
-yarn exec turbo login
-pnpm exec turbo login
+```bash
+pnpm build
+# or
+turbo build
 ```
 
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
+To build a specific application (e.g., `web`):
 
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
-
-```
-# With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed (recommended)
-turbo link
-
-# Without [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation), use your package manager
-npx turbo link
-yarn exec turbo link
-pnpm exec turbo link
+```bash
+pnpm --filter web build
 ```
 
-## Useful Links
+### Linting & Formatting
 
-Learn more about the power of Turborepo:
+To run the linter and check for code quality issues:
 
-- [Tasks](https://turborepo.dev/docs/crafting-your-repository/running-tasks)
-- [Caching](https://turborepo.dev/docs/crafting-your-repository/caching)
-- [Remote Caching](https://turborepo.dev/docs/core-concepts/remote-caching)
-- [Filtering](https://turborepo.dev/docs/crafting-your-repository/running-tasks#using-filters)
-- [Configuration Options](https://turborepo.dev/docs/reference/configuration)
-- [CLI Usage](https://turborepo.dev/docs/reference/command-line-reference)
+```bash
+pnpm lint
+```
+
+To format code using Prettier:
+
+```bash
+pnpm format
+```
+
+## Contributing
+
+We welcome contributions to ArqiTech! Please follow these steps:
+
+1.  Fork the repository.
+2.  Create a new branch for your feature or bug fix (`git checkout -b feature/amazing-feature`).
+3.  Commit your changes (`git commit -m 'Add some amazing feature'`).
+4.  Push to your branch (`git push origin feature/amazing-feature`).
+5.  Open a Pull Request.
+
+Please ensure your code adheres to the project's coding standards and passes all linting checks before submitting.
+
+## License
+
+This project is private and proprietary. All rights reserved.
